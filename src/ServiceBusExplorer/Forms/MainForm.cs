@@ -45,6 +45,7 @@ using Microsoft.Azure.ServiceBusExplorer.Controls;
 using Microsoft.Azure.ServiceBusExplorer.Helpers;
 using Microsoft.ServiceBus.Messaging;
 using ConnectivityMode = Microsoft.ServiceBus.ConnectivityMode;
+
 #endregion
 
 namespace Microsoft.Azure.ServiceBusExplorer.Forms
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
         private const string EntityFileNameFormat = "{0} {1} {2}.xml";
         private const string EntitiesFileNameFormat = "{0} {1}.xml";
         private const string UrlSegmentFormat = "{0}/{1}";
-        private const string NameMessageCountFormat = "{0} ({1}, {2}, {3})";
+        private const string NameMessageCountFormat = "{0} ({1}, {2}, {3}, {4})";
         private const string PartitionFormat = "{0,2:00}";
 
         //***************************
@@ -1009,6 +1010,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
                                                                            string.Format(NameMessageCountFormat,
                                                                                          wrapper.SubscriptionDescription.Name,
                                                                                          wrapper.SubscriptionDescription.MessageCountDetails.ActiveMessageCount,
+                                                                                         wrapper.SubscriptionDescription.MessageCountDetails.ScheduledMessageCount,
                                                                                          wrapper.SubscriptionDescription.MessageCountDetails.DeadLetterMessageCount,
                                                                                          wrapper.SubscriptionDescription.MessageCountDetails.TransferDeadLetterMessageCount) :
                                                                            wrapper.SubscriptionDescription.Name,
@@ -1712,6 +1714,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
                                                                string.Format(NameMessageCountFormat,
                                                                              serviceBusTreeView.SelectedNode.Name,
                                                                              queueDescription.MessageCountDetails.ActiveMessageCount,
+                                                                             queueDescription.MessageCountDetails.ScheduledMessageCount,
                                                                              queueDescription.MessageCountDetails.DeadLetterMessageCount,
                                                                              queueDescription.MessageCountDetails.TransferDeadLetterMessageCount) :
                                                                serviceBusTreeView.SelectedNode.Name;
@@ -1930,6 +1933,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
                                                                                    string.Format(NameMessageCountFormat,
                                                                                                  subscription.Name,
                                                                                                  subscription.MessageCountDetails.ActiveMessageCount,
+                                                                                                 subscription.MessageCountDetails.ScheduledMessageCount,
                                                                                                  subscription.MessageCountDetails.DeadLetterMessageCount,
                                                                                                  subscription.MessageCountDetails.TransferDeadLetterMessageCount) :
                                                                                    subscription.Name,
@@ -2013,6 +2017,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
                                                                string.Format(NameMessageCountFormat,
                                                                              serviceBusTreeView.SelectedNode.Name,
                                                                              subscriptionDescription.MessageCountDetails.ActiveMessageCount,
+                                                                             subscriptionDescription.MessageCountDetails.ScheduledMessageCount,
                                                                              subscriptionDescription.MessageCountDetails.DeadLetterMessageCount,
                                                                              subscriptionDescription.MessageCountDetails.TransferDeadLetterMessageCount) :
                                                                serviceBusTreeView.SelectedNode.Name;
@@ -2084,6 +2089,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
                         ? string.Format(NameMessageCountFormat, 
                                         subscriptionDescription.Name, 
                                         subscriptionDescription.MessageCountDetails.ActiveMessageCount, 
+                                        subscriptionDescription.MessageCountDetails.ScheduledMessageCount,
                                         subscriptionDescription.MessageCountDetails.DeadLetterMessageCount,
                                         subscriptionDescription.MessageCountDetails.TransferDeadLetterMessageCount)
                         : subscriptionDescription.Name, subscriptionDescription.Status == EntityStatus.Active ? SubscriptionIconIndex : GreySubscriptionIconIndex, subscriptionDescription.Status == EntityStatus.Active
@@ -4801,6 +4807,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
                                                         ? string.Format(NameMessageCountFormat,
                                                             subscription.Name,
                                                             subscription.MessageCountDetails.ActiveMessageCount,
+                                                            subscription.MessageCountDetails.ScheduledMessageCount,
                                                             subscription.MessageCountDetails.DeadLetterMessageCount,
                                                             subscription.MessageCountDetails.TransferDeadLetterMessageCount)
                                                         : subscription.Name,
@@ -5888,6 +5895,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
                                                               string.Format(NameMessageCountFormat,
                                                                             segments[i],
                                                                             queueDescription.MessageCountDetails.ActiveMessageCount,
+                                                                            queueDescription.MessageCountDetails.ScheduledMessageCount,
                                                                             queueDescription.MessageCountDetails.DeadLetterMessageCount,
                                                                             queueDescription.MessageCountDetails.TransferDeadLetterMessageCount) :
                                                               segments[i],
