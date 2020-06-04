@@ -19,9 +19,9 @@
 //=======================================================================================
 #endregion
 
-using Microsoft.Azure.ServiceBusExplorer.Controls;
+using ServiceBusExplorer.Controls;
 
-namespace Microsoft.Azure.ServiceBusExplorer.Forms
+namespace ServiceBusExplorer.Forms
 {
     partial class ConnectForm
     {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Azure.ServiceBusExplorer.Controls.CheckBoxProperties checkBoxProperties1 = new Microsoft.Azure.ServiceBusExplorer.Controls.CheckBoxProperties();
+            ServiceBusExplorer.Controls.CheckBoxProperties checkBoxProperties1 = new ServiceBusExplorer.Controls.CheckBoxProperties();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectForm));
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -74,13 +74,18 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.txtEntityPath = new System.Windows.Forms.TextBox();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.grouperFilters = new Microsoft.Azure.ServiceBusExplorer.Controls.Grouper();
+            this.btnRename = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.grouperConfigFileUse = new ServiceBusExplorer.Controls.Grouper();
+            this.lblConfigFileUse = new System.Windows.Forms.Label();
+            this.grouperFilters = new ServiceBusExplorer.Controls.Grouper();
             this.lblSelectedEntities = new System.Windows.Forms.Label();
-            this.cboSelectedEntities = new Microsoft.Azure.ServiceBusExplorer.Controls.CheckBoxComboBox();
+            this.cboSelectedEntities = new ServiceBusExplorer.Controls.CheckBoxComboBox();
             this.lblSubscriptionFilterExpression = new System.Windows.Forms.Label();
             this.lblQueueFilterExpression = new System.Windows.Forms.Label();
             this.lblTopicFilterExpression = new System.Windows.Forms.Label();
-            this.grouperServiceBusNamespaceSettings = new Microsoft.Azure.ServiceBusExplorer.Controls.Grouper();
+            this.grouperServiceBusNamespaceSettings = new ServiceBusExplorer.Controls.Grouper();
+            this.lblNewSdkTransportType = new System.Windows.Forms.Label();
             this.cboTransportType = new System.Windows.Forms.ComboBox();
             this.lblTransportType = new System.Windows.Forms.Label();
             this.cboConnectivityMode = new System.Windows.Forms.ComboBox();
@@ -91,9 +96,11 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.lblIssuerName = new System.Windows.Forms.Label();
             this.lblNamespace = new System.Windows.Forms.Label();
             this.lblEntityPath = new System.Windows.Forms.Label();
-            this.grouperServiceBusNamespaces = new Microsoft.Azure.ServiceBusExplorer.Controls.Grouper();
+            this.grouperServiceBusNamespaces = new ServiceBusExplorer.Controls.Grouper();
             this.cboServiceBusNamespace = new System.Windows.Forms.ComboBox();
+            this.useAmqpWebSocketsCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
+            this.grouperConfigFileUse.SuspendLayout();
             this.grouperFilters.SuspendLayout();
             this.grouperServiceBusNamespaceSettings.SuspendLayout();
             this.grouperServiceBusNamespaces.SuspendLayout();
@@ -107,7 +114,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.btnOk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.btnOk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOk.Location = new System.Drawing.Point(616, 409);
+            this.btnOk.Location = new System.Drawing.Point(616, 443);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(72, 24);
             this.btnOk.TabIndex = 4;
@@ -125,7 +132,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(696, 409);
+            this.btnCancel.Location = new System.Drawing.Point(696, 443);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(72, 24);
             this.btnCancel.TabIndex = 5;
@@ -146,7 +153,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.btnClearSubscriptionFilterExpression.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSubscriptionFilterExpression.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnClearSubscriptionFilterExpression.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(125)))), ((int)(((byte)(150)))));
-            this.btnClearSubscriptionFilterExpression.Location = new System.Drawing.Point(328, 208);
+            this.btnClearSubscriptionFilterExpression.Location = new System.Drawing.Point(328, 190);
             this.btnClearSubscriptionFilterExpression.Name = "btnClearSubscriptionFilterExpression";
             this.btnClearSubscriptionFilterExpression.Size = new System.Drawing.Size(24, 21);
             this.btnClearSubscriptionFilterExpression.TabIndex = 9;
@@ -169,7 +176,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.btnClearTopicFilterExpression.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearTopicFilterExpression.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnClearTopicFilterExpression.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(125)))), ((int)(((byte)(150)))));
-            this.btnClearTopicFilterExpression.Location = new System.Drawing.Point(328, 160);
+            this.btnClearTopicFilterExpression.Location = new System.Drawing.Point(328, 142);
             this.btnClearTopicFilterExpression.Name = "btnClearTopicFilterExpression";
             this.btnClearTopicFilterExpression.Size = new System.Drawing.Size(24, 21);
             this.btnClearTopicFilterExpression.TabIndex = 6;
@@ -192,7 +199,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.btnClearQueueFilterExpression.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearQueueFilterExpression.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnClearQueueFilterExpression.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(125)))), ((int)(((byte)(150)))));
-            this.btnClearQueueFilterExpression.Location = new System.Drawing.Point(328, 112);
+            this.btnClearQueueFilterExpression.Location = new System.Drawing.Point(328, 94);
             this.btnClearQueueFilterExpression.Name = "btnClearQueueFilterExpression";
             this.btnClearQueueFilterExpression.Size = new System.Drawing.Size(24, 21);
             this.btnClearQueueFilterExpression.TabIndex = 3;
@@ -213,7 +220,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.btnOpenSubscriptionFilterForm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.btnOpenSubscriptionFilterForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenSubscriptionFilterForm.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnOpenSubscriptionFilterForm.Location = new System.Drawing.Point(296, 208);
+            this.btnOpenSubscriptionFilterForm.Location = new System.Drawing.Point(296, 190);
             this.btnOpenSubscriptionFilterForm.Name = "btnOpenSubscriptionFilterForm";
             this.btnOpenSubscriptionFilterForm.Size = new System.Drawing.Size(24, 21);
             this.btnOpenSubscriptionFilterForm.TabIndex = 8;
@@ -230,7 +237,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.txtSubscriptionFilterExpression.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubscriptionFilterExpression.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtSubscriptionFilterExpression.Location = new System.Drawing.Point(16, 208);
+            this.txtSubscriptionFilterExpression.Location = new System.Drawing.Point(16, 190);
             this.txtSubscriptionFilterExpression.Name = "txtSubscriptionFilterExpression";
             this.txtSubscriptionFilterExpression.Size = new System.Drawing.Size(272, 20);
             this.txtSubscriptionFilterExpression.TabIndex = 7;
@@ -245,7 +252,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.btnOpenTopicFilterForm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.btnOpenTopicFilterForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenTopicFilterForm.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnOpenTopicFilterForm.Location = new System.Drawing.Point(296, 160);
+            this.btnOpenTopicFilterForm.Location = new System.Drawing.Point(296, 142);
             this.btnOpenTopicFilterForm.Name = "btnOpenTopicFilterForm";
             this.btnOpenTopicFilterForm.Size = new System.Drawing.Size(24, 21);
             this.btnOpenTopicFilterForm.TabIndex = 5;
@@ -266,7 +273,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.btnOpenQueueFilterForm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.btnOpenQueueFilterForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenQueueFilterForm.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnOpenQueueFilterForm.Location = new System.Drawing.Point(296, 112);
+            this.btnOpenQueueFilterForm.Location = new System.Drawing.Point(296, 94);
             this.btnOpenQueueFilterForm.Name = "btnOpenQueueFilterForm";
             this.btnOpenQueueFilterForm.Size = new System.Drawing.Size(24, 21);
             this.btnOpenQueueFilterForm.TabIndex = 2;
@@ -283,7 +290,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.txtQueueFilterExpression.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtQueueFilterExpression.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtQueueFilterExpression.Location = new System.Drawing.Point(16, 112);
+            this.txtQueueFilterExpression.Location = new System.Drawing.Point(16, 94);
             this.txtQueueFilterExpression.Multiline = true;
             this.txtQueueFilterExpression.Name = "txtQueueFilterExpression";
             this.txtQueueFilterExpression.Size = new System.Drawing.Size(272, 20);
@@ -295,7 +302,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.txtTopicFilterExpression.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTopicFilterExpression.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtTopicFilterExpression.Location = new System.Drawing.Point(16, 160);
+            this.txtTopicFilterExpression.Location = new System.Drawing.Point(16, 142);
             this.txtTopicFilterExpression.Name = "txtTopicFilterExpression";
             this.txtTopicFilterExpression.Size = new System.Drawing.Size(272, 20);
             this.txtTopicFilterExpression.TabIndex = 4;
@@ -352,7 +359,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             // logoPictureBox
             // 
             this.logoPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.logoPictureBox.BackgroundImage = global::Microsoft.Azure.ServiceBusExplorer.Properties.Resources.MicrosoftAzureWhiteLogo;
+            this.logoPictureBox.BackgroundImage = global::ServiceBusExplorer.Properties.Resources.MicrosoftAzureWhiteLogo;
             this.logoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.logoPictureBox.ErrorImage = null;
             this.logoPictureBox.Location = new System.Drawing.Point(657, 8);
@@ -369,7 +376,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(536, 409);
+            this.btnSave.Location = new System.Drawing.Point(536, 443);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(72, 24);
             this.btnSave.TabIndex = 3;
@@ -380,11 +387,80 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.btnSave.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             this.btnSave.MouseLeave += new System.EventHandler(this.button_MouseLeave);
             // 
+            // btnRename
+            // 
+            this.btnRename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRename.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(228)))), ((int)(((byte)(242)))));
+            this.btnRename.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.btnRename.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.btnRename.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.btnRename.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRename.Location = new System.Drawing.Point(16, 443);
+            this.btnRename.Name = "btnRename";
+            this.btnRename.Size = new System.Drawing.Size(72, 24);
+            this.btnRename.TabIndex = 35;
+            this.btnRename.Text = "Rename";
+            this.btnRename.UseVisualStyleBackColor = false;
+            this.btnRename.Visible = false;
+            this.btnRename.Click += new System.EventHandler(this.btnRename_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(228)))), ((int)(((byte)(242)))));
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Location = new System.Drawing.Point(94, 443);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(72, 24);
+            this.btnDelete.TabIndex = 36;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Visible = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // grouperConfigFileUse
+            // 
+            this.grouperConfigFileUse.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(228)))), ((int)(((byte)(242)))));
+            this.grouperConfigFileUse.BackgroundGradientColor = System.Drawing.Color.White;
+            this.grouperConfigFileUse.BackgroundGradientMode = ServiceBusExplorer.Controls.Grouper.GroupBoxGradientMode.None;
+            this.grouperConfigFileUse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.grouperConfigFileUse.BorderThickness = 1F;
+            this.grouperConfigFileUse.Controls.Add(this.lblConfigFileUse);
+            this.grouperConfigFileUse.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.grouperConfigFileUse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.grouperConfigFileUse.ForeColor = System.Drawing.Color.White;
+            this.grouperConfigFileUse.GroupImage = null;
+            this.grouperConfigFileUse.GroupTitle = "Configuration File for Connections and Settings";
+            this.grouperConfigFileUse.Location = new System.Drawing.Point(16, 344);
+            this.grouperConfigFileUse.Name = "grouperConfigFileUse";
+            this.grouperConfigFileUse.Padding = new System.Windows.Forms.Padding(20);
+            this.grouperConfigFileUse.PaintGroupBox = true;
+            this.grouperConfigFileUse.RoundCorners = 4;
+            this.grouperConfigFileUse.ShadowColor = System.Drawing.Color.DarkGray;
+            this.grouperConfigFileUse.ShadowControl = false;
+            this.grouperConfigFileUse.ShadowThickness = 1;
+            this.grouperConfigFileUse.Size = new System.Drawing.Size(368, 88);
+            this.grouperConfigFileUse.TabIndex = 37;
+            // 
+            // lblConfigFileUse
+            // 
+            this.lblConfigFileUse.AutoSize = true;
+            this.lblConfigFileUse.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblConfigFileUse.Location = new System.Drawing.Point(16, 29);
+            this.lblConfigFileUse.Name = "lblConfigFileUse";
+            this.lblConfigFileUse.Size = new System.Drawing.Size(237, 39);
+            this.lblConfigFileUse.TabIndex = 39;
+            this.lblConfigFileUse.Text = "Currently Service Bus Explorer is using:\r\n{replace}\r\nGo to View -> Options if you" +
+    " want to change this.";
+            // 
             // grouperFilters
             // 
             this.grouperFilters.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(228)))), ((int)(((byte)(242)))));
             this.grouperFilters.BackgroundGradientColor = System.Drawing.Color.White;
-            this.grouperFilters.BackgroundGradientMode = Microsoft.Azure.ServiceBusExplorer.Controls.Grouper.GroupBoxGradientMode.None;
+            this.grouperFilters.BackgroundGradientMode = ServiceBusExplorer.Controls.Grouper.GroupBoxGradientMode.None;
             this.grouperFilters.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.grouperFilters.BorderThickness = 1F;
             this.grouperFilters.Controls.Add(this.lblSelectedEntities);
@@ -414,7 +490,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.grouperFilters.ShadowColor = System.Drawing.Color.DarkGray;
             this.grouperFilters.ShadowControl = false;
             this.grouperFilters.ShadowThickness = 1;
-            this.grouperFilters.Size = new System.Drawing.Size(368, 296);
+            this.grouperFilters.Size = new System.Drawing.Size(368, 228);
             this.grouperFilters.TabIndex = 1;
             this.grouperFilters.CustomPaint += new System.Action<System.Windows.Forms.PaintEventArgs>(this.grouperFilters_CustomPaint);
             // 
@@ -422,7 +498,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             // 
             this.lblSelectedEntities.AutoSize = true;
             this.lblSelectedEntities.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSelectedEntities.Location = new System.Drawing.Point(16, 48);
+            this.lblSelectedEntities.Location = new System.Drawing.Point(16, 30);
             this.lblSelectedEntities.Name = "lblSelectedEntities";
             this.lblSelectedEntities.Size = new System.Drawing.Size(89, 13);
             this.lblSelectedEntities.TabIndex = 53;
@@ -436,7 +512,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.cboSelectedEntities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSelectedEntities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboSelectedEntities.FormattingEnabled = true;
-            this.cboSelectedEntities.Location = new System.Drawing.Point(16, 64);
+            this.cboSelectedEntities.Location = new System.Drawing.Point(16, 46);
             this.cboSelectedEntities.Name = "cboSelectedEntities";
             this.cboSelectedEntities.Size = new System.Drawing.Size(336, 21);
             this.cboSelectedEntities.TabIndex = 0;
@@ -445,7 +521,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             // 
             this.lblSubscriptionFilterExpression.AutoSize = true;
             this.lblSubscriptionFilterExpression.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSubscriptionFilterExpression.Location = new System.Drawing.Point(16, 192);
+            this.lblSubscriptionFilterExpression.Location = new System.Drawing.Point(16, 174);
             this.lblSubscriptionFilterExpression.Name = "lblSubscriptionFilterExpression";
             this.lblSubscriptionFilterExpression.Size = new System.Drawing.Size(147, 13);
             this.lblSubscriptionFilterExpression.TabIndex = 51;
@@ -455,7 +531,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             // 
             this.lblQueueFilterExpression.AutoSize = true;
             this.lblQueueFilterExpression.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblQueueFilterExpression.Location = new System.Drawing.Point(16, 96);
+            this.lblQueueFilterExpression.Location = new System.Drawing.Point(16, 78);
             this.lblQueueFilterExpression.Name = "lblQueueFilterExpression";
             this.lblQueueFilterExpression.Size = new System.Drawing.Size(121, 13);
             this.lblQueueFilterExpression.TabIndex = 47;
@@ -465,7 +541,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             // 
             this.lblTopicFilterExpression.AutoSize = true;
             this.lblTopicFilterExpression.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTopicFilterExpression.Location = new System.Drawing.Point(16, 144);
+            this.lblTopicFilterExpression.Location = new System.Drawing.Point(16, 126);
             this.lblTopicFilterExpression.Name = "lblTopicFilterExpression";
             this.lblTopicFilterExpression.Size = new System.Drawing.Size(116, 13);
             this.lblTopicFilterExpression.TabIndex = 46;
@@ -475,9 +551,11 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             // 
             this.grouperServiceBusNamespaceSettings.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(228)))), ((int)(((byte)(242)))));
             this.grouperServiceBusNamespaceSettings.BackgroundGradientColor = System.Drawing.Color.White;
-            this.grouperServiceBusNamespaceSettings.BackgroundGradientMode = Microsoft.Azure.ServiceBusExplorer.Controls.Grouper.GroupBoxGradientMode.None;
+            this.grouperServiceBusNamespaceSettings.BackgroundGradientMode = ServiceBusExplorer.Controls.Grouper.GroupBoxGradientMode.None;
             this.grouperServiceBusNamespaceSettings.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.grouperServiceBusNamespaceSettings.BorderThickness = 1F;
+            this.grouperServiceBusNamespaceSettings.Controls.Add(this.useAmqpWebSocketsCheckBox);
+            this.grouperServiceBusNamespaceSettings.Controls.Add(this.lblNewSdkTransportType);
             this.grouperServiceBusNamespaceSettings.Controls.Add(this.cboTransportType);
             this.grouperServiceBusNamespaceSettings.Controls.Add(this.lblTransportType);
             this.grouperServiceBusNamespaceSettings.Controls.Add(this.cboConnectivityMode);
@@ -505,9 +583,19 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.grouperServiceBusNamespaceSettings.ShadowColor = System.Drawing.Color.DarkGray;
             this.grouperServiceBusNamespaceSettings.ShadowControl = false;
             this.grouperServiceBusNamespaceSettings.ShadowThickness = 1;
-            this.grouperServiceBusNamespaceSettings.Size = new System.Drawing.Size(368, 376);
+            this.grouperServiceBusNamespaceSettings.Size = new System.Drawing.Size(368, 408);
             this.grouperServiceBusNamespaceSettings.TabIndex = 2;
             this.grouperServiceBusNamespaceSettings.CustomPaint += new System.Action<System.Windows.Forms.PaintEventArgs>(this.grouperServiceBusNamespaceSettings_CustomPaint);
+            // 
+            // lblNewSdkTransportType
+            // 
+            this.lblNewSdkTransportType.AutoSize = true;
+            this.lblNewSdkTransportType.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblNewSdkTransportType.Location = new System.Drawing.Point(16, 368);
+            this.lblNewSdkTransportType.Name = "lblNewSdkTransportType";
+            this.lblNewSdkTransportType.Size = new System.Drawing.Size(346, 13);
+            this.lblNewSdkTransportType.TabIndex = 74;
+            this.lblNewSdkTransportType.Text = "Use AMQP Web Sockets for Microsoft.Azure.ServiceBus.dll (new client)";
             // 
             // cboTransportType
             // 
@@ -616,7 +704,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             // 
             this.grouperServiceBusNamespaces.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(228)))), ((int)(((byte)(242)))));
             this.grouperServiceBusNamespaces.BackgroundGradientColor = System.Drawing.Color.White;
-            this.grouperServiceBusNamespaces.BackgroundGradientMode = Microsoft.Azure.ServiceBusExplorer.Controls.Grouper.GroupBoxGradientMode.None;
+            this.grouperServiceBusNamespaces.BackgroundGradientMode = ServiceBusExplorer.Controls.Grouper.GroupBoxGradientMode.None;
             this.grouperServiceBusNamespaces.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.grouperServiceBusNamespaces.BorderThickness = 1F;
             this.grouperServiceBusNamespaces.Controls.Add(this.cboServiceBusNamespace);
@@ -651,12 +739,25 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.cboServiceBusNamespace.TabIndex = 0;
             this.cboServiceBusNamespace.SelectedIndexChanged += new System.EventHandler(this.cboServiceBusNamespace_SelectedIndexChanged);
             // 
+            // useAmqpWebSocketsCheckBox
+            // 
+            this.useAmqpWebSocketsCheckBox.AutoSize = true;
+            this.useAmqpWebSocketsCheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.useAmqpWebSocketsCheckBox.Location = new System.Drawing.Point(337, 384);
+            this.useAmqpWebSocketsCheckBox.Name = "useAmqpWebSocketsCheckBox";
+            this.useAmqpWebSocketsCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.useAmqpWebSocketsCheckBox.TabIndex = 75;
+            this.useAmqpWebSocketsCheckBox.UseVisualStyleBackColor = true;
+            // 
             // ConnectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(228)))), ((int)(((byte)(242)))));
-            this.ClientSize = new System.Drawing.Size(784, 442);
+            this.ClientSize = new System.Drawing.Size(784, 477);
+            this.Controls.Add(this.grouperConfigFileUse);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnRename);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.grouperFilters);
             this.Controls.Add(this.logoPictureBox);
@@ -674,6 +775,8 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             this.Text = "Connect to a Service Bus Namespace";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ConnectForm_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
+            this.grouperConfigFileUse.ResumeLayout(false);
+            this.grouperConfigFileUse.PerformLayout();
             this.grouperFilters.ResumeLayout(false);
             this.grouperFilters.PerformLayout();
             this.grouperServiceBusNamespaceSettings.ResumeLayout(false);
@@ -722,5 +825,11 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtEntityPath;
         private System.Windows.Forms.Label lblEntityPath;
+        private System.Windows.Forms.Button btnRename;
+        private System.Windows.Forms.Button btnDelete;
+        private Grouper grouperConfigFileUse;
+        private System.Windows.Forms.Label lblConfigFileUse;
+        private System.Windows.Forms.Label lblNewSdkTransportType;
+        private System.Windows.Forms.CheckBox useAmqpWebSocketsCheckBox;
     }
 }

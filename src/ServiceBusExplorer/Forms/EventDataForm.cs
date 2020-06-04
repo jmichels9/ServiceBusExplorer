@@ -29,13 +29,14 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Microsoft.Azure.ServiceBusExplorer.Helpers;
+using ServiceBusExplorer.Helpers;
 using Microsoft.ServiceBus.Messaging;
 using FastColoredTextBoxNS;
+using ServiceBusExplorer.Utilities.Helpers;
 
 #endregion
 
-namespace Microsoft.Azure.ServiceBusExplorer.Forms
+namespace ServiceBusExplorer.Forms
 {
     public partial class EventDataForm : Form
     {
@@ -96,7 +97,8 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
             }
             else
             {
-                txtMessageText.Text = messageText;
+                txtMessageText.Language = Language.Custom;
+                txtMessageText.Text = string.IsNullOrEmpty(messageText) ? "": messageText;
             }
 
             // Initialize the DataGridView.

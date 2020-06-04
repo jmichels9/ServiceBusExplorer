@@ -34,15 +34,17 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Azure.ServiceBusExplorer.Controls;
-using Microsoft.Azure.ServiceBusExplorer.Helpers;
+using ServiceBusExplorer.Controls;
+using ServiceBusExplorer.Helpers;
 using Microsoft.ServiceBus.Messaging;
 
 #endregion
 
-namespace Microsoft.Azure.ServiceBusExplorer.Forms
+namespace ServiceBusExplorer.Forms
 {
     using Enums;
+    using ServiceBusExplorer.UIHelpers;
+    using ServiceBusExplorer.Utilities.Helpers;
 
     public sealed partial class ContainerForm : Form
     {
@@ -460,7 +462,7 @@ namespace Microsoft.Azure.ServiceBusExplorer.Forms
                 }
                 else
                 {
-                    Text = string.Format(ConsumerGroupListenerFormat, consumerGroup);
+                    Text = string.Format(ConsumerGroupListenerFormat, consumerGroup, hubName);
                     panelMain.HeaderText = string.Format(HeaderTextConsumerGroupListenerFormat, hubName, consumerGroup);
                 }
                 partitionListenerControl.Focus();

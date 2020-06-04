@@ -29,29 +29,24 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Azure.ServiceBusExplorer.Forms;
-using Microsoft.Azure.ServiceBusExplorer.Helpers;
+using ServiceBusExplorer.Forms;
+using ServiceBusExplorer.Helpers;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
-using FastColoredTextBoxNS;
+using ServiceBusExplorer.UIHelpers;
+using ServiceBusExplorer.Utilities.Helpers;
 
 // ReSharper disable CoVariantArrayConversion
 #endregion
 
-namespace Microsoft.Azure.ServiceBusExplorer.Controls
+namespace ServiceBusExplorer.Controls
 {
     public partial class PartitionListenerControl : UserControl
     {
-        #region DllImports
-        [DllImport("user32.dll")]
-        static extern bool HideCaret(IntPtr hWnd);
-        #endregion
-
         #region Private Constants
         //***************************
         // Formats
@@ -1096,7 +1091,7 @@ EventProcessorCheckpointHelper.GetLease(ns, eventHub, consumerGroup.GroupName, p
             var textBox = sender as TextBox;
             if (textBox != null)
             {
-                HideCaret(textBox.Handle);
+                NativeMethods.HideCaret(textBox.Handle);
             }
         }
 
@@ -1128,7 +1123,7 @@ EventProcessorCheckpointHelper.GetLease(ns, eventHub, consumerGroup.GroupName, p
                     registeredDictionary[partitionDescription.PartitionId])
                 {
                     await consumerGroup.UnregisterProcessorAsync(new Lease { PartitionId = partitionDescription.PartitionId },
-                                                                 ServiceBus.Messaging.CloseReason.Shutdown);
+                        Microsoft.ServiceBus.Messaging.CloseReason.Shutdown);
                 }
             }
             lock (this)
